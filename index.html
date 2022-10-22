@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego de piedra, papel o tijera</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+    <script src="js/index.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="resultados">
+        <div class="victorias">
+          <h4>Victorias</h4>
+          <span id="texto_victorias"></span>
+        </div>
+        <div class="derrotas">
+          <h4>Derrotas</h4>
+          <span id="texto_derrotas"></span>
+        </div>
+      </div>
+      <div class="juego" id="juego">
+        <div class="papel" id="contenedor_papel">
+          <img src="images/icon-paper.svg" alt="papper" id="item_papel" />
+        </div>
+        <div class="tijeras" id="contenedor_tijeras">
+          <img
+            src="images/icon-scissors.svg"
+            alt="scissors"
+            id="item_tijeras"
+          />
+        </div>
+        <div class="piedra" id="contenedor_piedra">
+          <img src="images/icon-rock.svg" alt="rock" id="item_piedra" />
+        </div>
+      </div>
+      <div class="ganador">
+        <h3 id="titulo_ganador"></h3>
+        <button class="ocultar" type="button" id="btn_reiniciar">
+          Reiniciar partida
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
