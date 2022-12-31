@@ -86,13 +86,19 @@ function comprobarGanador() {
 
 function actualizarValores(ganador) {
   keysLocalStorage = Object.keys(db);
-  for (let index = 0; index < keysLocalStorage.length; index++) {
-    let obj = JSON.parse(db.getItem(keysLocalStorage[index]));
-    if (obj.nombre === ganador) {
-      obj.victorias = obj.victorias + 1;
-      db.setItem(obj.nombre, JSON.stringify(obj));
-      mostrarMensajeGanador(ganador);
-    }
+  if (db.getItem("player") != null && "player" === ganador) {
+    let obj = JSON.parse(db.getItem("player"));
+    obj.victorias = obj.victorias + 1;
+    console.log("Este es el objeto: ", obj);
+    db.setItem(obj.nombre, JSON.stringify(obj));
+    mostrarMensajeGanador(ganador);
+  }
+  if (db.getItem("maquina") != null && "maquina" === ganador) {
+    let obj = JSON.parse(db.getItem("maquina"));
+    obj.victorias = obj.victorias + 1;
+    db.setItem(obj.nombre, JSON.stringify(obj));
+    console.log("Este es el objeto: ", obj);
+    mostrarMensajeGanador(ganador);
   }
 }
 
@@ -132,13 +138,17 @@ function guardarValoresIniciales(objetoPlayer, objetoMaquina) {
 
 function imprimirValoresActuales() {
   keysLocalStorage = Object.keys(db);
-  for (let index = 0; index < keysLocalStorage.length; index++) {
-    let obj = JSON.parse(db.getItem(keysLocalStorage[index]));
-    if (obj.nombre === "player") {
-      textoVictorias.textContent = obj.victorias;
-    } else if (obj.nombre === "maquina") {
-      textoDerrotas.textContent = obj.victorias;
-    }
+  if (db.getItem("player") != null) {
+    let obj = JSON.parse(db.getItem("player"));
+    textoVictorias.textContent = obj.victorias;
+  } else {
+    alert("No se encontro el obj player en localStorage");
+  }
+  if (db.getItem("maquina") != null) {
+    let obj = JSON.parse(db.getItem("maquina"));
+    textoDerrotas.textContent = obj.victorias;
+  } else {
+    alert("No se encontro el obj maquina en localStorage");
   }
 }
 
